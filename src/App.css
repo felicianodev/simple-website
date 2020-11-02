@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'SourceCodePro';
+  src: local('SourceCodePro'), url(./font/sourcecodepro-medium-webfont.woff) format('woff');
+}
+
+body {
+  font-family: 'SourceCodePro';
+}
