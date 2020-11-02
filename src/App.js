@@ -1,23 +1,44 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import Typewriter from 'typewriter-effect';
 import './App.css';
+import {FACTS} from './FACTS';
+
+
+
 
 function App() {
+  function getRandomFact() {
+    const randomElement = FACTS[Math.floor(Math.random() * FACTS.length)];
+    if (currentFact === randomElement) {
+      return getRandomFact()
+    }
+    return randomElement
+  }  
+  function showRandomFact(fact) {
+    console.log('calling', fact)
+    return <Typewriter
+      onInit={(randomFactTypewriter) => {
+        randomFactTypewriter.typeString(fact)
+          .start()
+      }}
+    /> 
+  }
+  const [currentFact, setFact] = useState('boo');
+  useEffect(() => {
+    showRandomFact(currentFact)
+  }, [currentFact])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Typewriter
+        onInit={(typewriter) => {
+          typewriter.typeString('Hello, World! <br/> I am Felix - I like computers, art and hip hop')
+            .start();
+        }}
+      />
+
+      <button onClick={() => {setFact(getRandomFact())}}> Learn a Random Fact About me -> </button>
+      <div>{showRandomFact(currentFact)}</div>
+
     </div>
   );
 }
