@@ -7,7 +7,7 @@ import TypingContainer from './components/Typing';
 
 
 function App() {
-  const [currentFact, setFact] = useState('');
+  const [currentFact, setFact] = useState('boo');
   function getRandomFact() {
     const randomElement = FACTS[Math.floor(Math.random() * FACTS.length)];
     if (currentFact === randomElement) {
@@ -19,9 +19,8 @@ function App() {
   useEffect(() => {
 
   }, [currentFact])
-  const showCurrentFact = (fact) => {
-    console.log('boo')
-    return <TypingContainer string={fact} />
+  const showCurrentFact = () => {
+    return <TypingContainer string={currentFact} />
   }
   return (
     <div className="App">
@@ -33,8 +32,8 @@ function App() {
       />
 
       <button onClick={() => getRandomFact()}> Learn a Random Fact About me -> </button>
-     {/*  {showCurrentFact(currentFact)} */}
-     <TypingContainer string={currentFact} />
+      <TypingContainer string={currentFact} />
+  
     </div>
   );
 }
