@@ -3,28 +3,26 @@ import Typed from 'typed.js'
 
 const TypingContainer = (string) => {
     const [currentFact, setFact] = useState('boo');
-    const [resetTypewriter, setTypewriter] = useState(false);
     var typeRef = useRef(null)
     console.log('in comp', string)
-    var options = {
-      strings: []
-    }
-    options.strings.push(currentFact)
+
   
     useEffect(() => {
-      setFact(string.string)
-      if(!typeRef.current) {
-        var typed = new Typed(typeRef, options)
+      var options = {
+        strings: []
       }
+      options.strings.push(string.string)      
+      //setFact(string.string)
+      var typed = new Typed(typeRef, options)
       typed.start()
       return () => {
         typed.destroy()
       };
-    })
+    }, [string.string])
 
     return (
       <div className="Typing">
-        <span ref={(el) => {typeRef = el} } key={currentFact}></span>
+        <span ref={(el) => {typeRef = el} }></span>
       </div>
     );
   }

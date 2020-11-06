@@ -15,10 +15,7 @@ function App() {
     }
     setFact(randomElement)
   }  
-  //console.log('fact state', currentFact)
-  useEffect(() => {
-
-  }, [currentFact])
+  
   const showCurrentFact = () => {
     return <TypingContainer string={currentFact} />
   }
