@@ -1,32 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Typewriter from 'typewriter-effect';
 import './App.css';
 import {FACTS} from './FACTS';
-
-
+import Typed from 'typed.js'
+import TypingContainer from './components/Typing';
 
 
 function App() {
+  const [currentFact, setFact] = useState('');
   function getRandomFact() {
     const randomElement = FACTS[Math.floor(Math.random() * FACTS.length)];
     if (currentFact === randomElement) {
       return getRandomFact()
     }
-    return randomElement
+    setFact(randomElement)
   }  
-  function showRandomFact(fact) {
-    console.log('calling', fact)
-    return <Typewriter
-      onInit={(randomFactTypewriter) => {
-        randomFactTypewriter.typeString(fact)
-          .start()
-      }}
-    /> 
-  }
-  const [currentFact, setFact] = useState('boo');
+  //console.log('fact state', currentFact)
   useEffect(() => {
-    showRandomFact(currentFact)
+
   }, [currentFact])
+  const showCurrentFact = (fact) => {
+    console.log('boo')
+    return <TypingContainer string={fact} />
+  }
   return (
     <div className="App">
       <Typewriter
@@ -36,9 +32,9 @@ function App() {
         }}
       />
 
-      <button onClick={() => {setFact(getRandomFact())}}> Learn a Random Fact About me -> </button>
-      <div>{showRandomFact(currentFact)}</div>
-
+      <button onClick={() => getRandomFact()}> Learn a Random Fact About me -> </button>
+     {/*  {showCurrentFact(currentFact)} */}
+     <TypingContainer string={currentFact} />
     </div>
   );
 }
