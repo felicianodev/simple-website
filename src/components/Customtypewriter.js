@@ -1,18 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Typed from 'typed.js'
 
-const TypingContainer = (string) => {
-    const [currentFact, setFact] = useState('boo');
+const Customtypewriter = (string) => {
     var typeRef = useRef(null)
-    console.log('in comp', string)
-
-  
     useEffect(() => {
       var options = {
         strings: []
       }
       options.strings.push(string.string)      
-      //setFact(string.string)
       var typed = new Typed(typeRef, options)
       typed.start()
       return () => {
@@ -21,11 +16,11 @@ const TypingContainer = (string) => {
     }, [string.string])
 
     return (
-      <div className="Typing">
+      <div className="Customtypewriter">
         <span ref={(el) => {typeRef = el} }></span>
       </div>
     );
   }
   
-  export default TypingContainer;
+  export default Customtypewriter;
   

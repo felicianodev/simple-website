@@ -1,0 +1,30 @@
+.header {
+    border-bottom: 8px solid white;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    .header--logo {
+        margin: auto 48px;
+    }
+    .header--external-links {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin: auto 48px;
+        .header--github-link {
+            height: 32px;
+            width: 32px;
+            padding: 8px;
+        }
+    
+        .header--linkedin-link {
+            height: 32px;
+            width: 32px; 
+            padding: 8px;       
+        }
+    }
+
+
+}
+

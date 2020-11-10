@@ -1,0 +1,42 @@
+$bordersize: 10px;
+$backgroundclr: lightgray;
+$shadowclr: darkgray;
+$lightgrey: #ADACAC;
+$darkgrey: #7C7C7C;
+.pixel-button-container {
+    button {
+        color: white;
+        all: unset;
+        border-style: solid;
+        border-color: white;
+        border-width: $bordersize 0;
+        margin: 0 $bordersize;
+        padding: $bordersize;
+        position: relative;
+        z-index: 1;
+        background: $lightgrey;
+        box-shadow: inset (-5px) (-5px) 0px 0px $darkgrey;
+        cursor: pointer;
+
+        &:before {
+            border: inherit;
+            border-width: 0 $bordersize;
+            width: 100%;
+            content: '';
+            height: 100%;
+            left: -$bordersize;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            right: -$bordersize;
+            z-index: -1;
+        }
+        
+        &:active {
+            background-color: $darkgrey;
+            box-shadow: inset (-5px) (-5px) 0px 0px $lightgrey;
+        }
+
+    }
+    
+}
