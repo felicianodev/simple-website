@@ -1,23 +1,30 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Typed from 'typed.js'
 
-const Customtypewriter = (string) => {
-    var typeRef = useRef(null)
+const Customtypewriter = (props) => {
+    var typeWriterRef = useRef(null)
     useEffect(() => {
       var options = {
-        strings: []
+        strings: [],
+        typeSpeed: 40,
+        onComplete: (self) => {
+          if(props.setDoneWriting) {
+            console.log('DONE TYPING', self);
+            props.setDoneWriting();
+          }
+        }
       }
-      options.strings.push(string.string)      
-      var typed = new Typed(typeRef, options)
+      options.strings.push(props.string)      
+      var typed = new Typed(typeWriterRef, options)
       typed.start()
       return () => {
         typed.destroy()
       };
-    }, [string.string])
+    }, [props.string])
 
     return (
-      <div className="Customtypewriter">
-        <span ref={(el) => {typeRef = el} }></span>
+      <div className="Customtypewriter" className={props.doneWriting ? 'hide-cursor' : null}>
+        <span ref={(el) => {typeWriterRef = el}}></span>
       </div>
     );
   }
