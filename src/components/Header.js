@@ -11,10 +11,10 @@ const Header = (props) => {
                 Felix Weber
             </a> 
             <div className="header--external-links">
-                <a href="github.com" className="header--github-link">
+                <a href="https://github.com/felicianodev" className="header--github-link">
                     <img src={GithubLogo} />
                 </a>
-                <a href="linkedin.com" className="header--github-link">
+                <a href="https://www.linkedin.com/in/felix-weber-49199b133" className="header--github-link">
                     <img src={LinkedinLogo} />
                 </a>
             </div>
